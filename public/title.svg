@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_图层_2" data-name="图层 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 157.51 36.29">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: -.08em;
+      }
+
+      .cls-2 {
+        fill: #f7f8f8;
+        font-family: Orbitron-Medium, Orbitron;
+        font-size: 32.69px;
+        font-variation-settings: 'wght' 500;
+        font-weight: 500;
+      }
+
+      .cls-3 {
+        letter-spacing: -.07em;
+      }
+
+      .cls-4 {
+        letter-spacing: -.05em;
+      }
+
+      .cls-5 {
+        letter-spacing: -.05em;
+      }
+    </style>
+  </defs>
+  <g id="_图层_1-2" data-name="图层 1">
+    <text class="cls-2" transform="translate(0 28.12)"><tspan class="cls-5" x="0" y="0">A</tspan><tspan class="cls-3" x="25.7" y="0">R</tspan><tspan class="cls-1" x="50.25" y="0">V</tspan><tspan class="cls-4" x="80.49" y="0">ADA</tspan></text>
+  </g>
+</svg>
