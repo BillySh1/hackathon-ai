@@ -25,13 +25,13 @@ export default function InputPanel() {
   const AnswerRender = (text: string) => {
     return (
       text && (
-        <div className="flex w-full mt-2 space-x-3 max-w-xs">
-          <div className="flex-shrink-0 h-10 w-10 rounded-full bg-gray-300">
+        <div className="flex w-full mt-4 space-x-3 max-w-3/5">
+          <div className="flex-shrink-0 h-10 w-10 rounded-full">
             <img className="w-10 rounded-full" src="/answer.webp" alt="" />
           </div>
-          <div>
-            <div className="bg-gray-300 p-3 rounded-r-lg rounded-bl-lg">
-              <p className="text-sm">{text}</p>
+          <div className="w-full">
+            <div className="w-full p-3 rounded-r-lg rounded-bl-lg">
+              <p className="text-md w-full">{text}</p>
             </div>
           </div>
         </div>
@@ -42,14 +42,14 @@ export default function InputPanel() {
   const AskRender = (text: string) => {
     return (
       text && (
-        <div className="flex w-full mt-2 space-x-3 max-w-xs ml-auto justify-end">
-          <div>
-            <div className="bg-blue-600 text-white p-3 rounded-l-lg rounded-br-lg">
-              <p className="text-sm">{text}</p>
-            </div>
-          </div>
-          <div className="flex-shrink-0 h-10 w-10 rounded-full bg-gray-300">
+        <div className="flex w-full mt-4 space-x-3 max-w-3/5 ml-auto justify-end">
+          <div className="flex-shrink-0 h-10 w-10 rounded-full">
             <img className="w-10 rounded-full" src="/ask.png" alt="" />
+          </div>
+          <div className="w-full">
+            <div className="w-full p-3 rounded-r-lg rounded-bl-lg">
+              <p className="text-md w-full">{text}</p>
+            </div>
           </div>
         </div>
       )
@@ -57,25 +57,31 @@ export default function InputPanel() {
   };
   return (
     <div className="flex flex-col items-center justify-center w-screen">
-       <input
-            className="chat-ipt"
-            type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") fetchOpenAI();
-            }}
-            placeholder="Type your message…"
-          />
-      {/* <div className="flex flex-col flex-grow w-full max-w-xl bg-white shadow-xl rounded-lg overflow-hidden">
-        <div className="flex flex-col flex-grow h-0 p-4 overflow-auto">
-          <div className="flex w-full mt-2 space-x-3 max-w-xs">
-            <div className="flex-shrink-0 h-10 w-10 rounded-full bg-gray-300">
+      <input
+        className="chat-ipt"
+        type="text"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.keyCode === 13) {
+            e.preventDefault();
+            fetchOpenAI();
+          }
+        }}
+        placeholder="Type your message…"
+      />
+      <div className="chat-container">
+        <div className="flex flex-col flex-grow p-4 overflow-auto h-max">
+          <div className="flex w-full mt-4 space-x-3 max-w-3/5">
+            <div className="flex-shrink-0 h-10 w-10 rounded-full">
               <img className="w-10 rounded-full" src="/answer.webp" alt="" />
             </div>
-            <div>
-              <div className="bg-gray-300 p-3 rounded-r-lg rounded-bl-lg">
-                <p className="text-sm">Hi artist! I am your digital clone, here to assist you in finding inspiration to create your distinctive cxxooo image!</p>
+            <div className="w-full">
+              <div className="w-full p-3 rounded-r-lg rounded-bl-lg">
+                <p className="text-md w-full">
+                  Hi artist! I am your digital clone, here to assist you in
+                  finding inspiration to create your distinctive cxxooo image!
+                </p>
               </div>
             </div>
           </div>
@@ -88,9 +94,7 @@ export default function InputPanel() {
             );
           })}
         </div>
-
-         
-        </div> */}
+      </div>
     </div>
   );
 }
