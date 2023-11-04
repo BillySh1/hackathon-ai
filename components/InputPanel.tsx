@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import OpenAI from "openai";
+import Loading from "./Loading";
 
 export default function InputPanel() {
   const [quenes, setQuenes] = useState<any>([]);
@@ -31,7 +32,11 @@ export default function InputPanel() {
           </div>
           <div className="w-full">
             <div className="w-full p-3 rounded-r-lg rounded-bl-lg">
-              <p className="text-md w-full">{text}</p>
+              {text === "loading..." ? (
+                <Loading />
+              ) : (
+                <p className="text-md w-full">{text}</p>
+              )}
             </div>
           </div>
         </div>

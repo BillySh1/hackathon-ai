@@ -1,13 +1,11 @@
-import type { Metadata } from "next";
+"use client";
 import { Inter } from "next/font/google";
+import React from "react";
+import { Provider } from "react-redux";
 import "./globals.css";
-import Provider from "@/components/Provider";
+import store from "@/state";
 
 const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "THE AI ARTTIST",
-};
 
 export default function RootLayout({
   children,
@@ -17,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Provider>{children}</Provider>
+        <Provider store={store}>{children}</Provider>;
       </body>
     </html>
   );
