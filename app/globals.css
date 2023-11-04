@@ -25,3 +25,13 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+
+.button-primary{
+  padding: 1rem 2rem;
+  color: #000;
+  background-color: #ffffff;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 1000;
+}
