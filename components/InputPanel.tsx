@@ -65,7 +65,7 @@ export default function InputPanel() {
             </div>
             <div>
               <div className="bg-gray-300 p-3 rounded-r-lg rounded-bl-lg">
-                <p className="text-sm">Feel free to text here</p>
+                <p className="text-sm">Hi artist! I am your digital clone, here to assist you in finding inspiration to create your distinctive cxxooo image!</p>
               </div>
             </div>
           </div>
