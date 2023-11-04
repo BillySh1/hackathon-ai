@@ -56,8 +56,18 @@ export default function InputPanel() {
     );
   };
   return (
-    <div className="flex flex-col items-center justify-center w-screen min-h-screen bg-black-100 text-gray-800 p-10">
-      <div className="flex flex-col flex-grow w-full max-w-xl bg-white shadow-xl rounded-lg overflow-hidden">
+    <div className="flex flex-col items-center justify-center w-screen">
+       <input
+            className="chat-ipt"
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") fetchOpenAI();
+            }}
+            placeholder="Type your message…"
+          />
+      {/* <div className="flex flex-col flex-grow w-full max-w-xl bg-white shadow-xl rounded-lg overflow-hidden">
         <div className="flex flex-col flex-grow h-0 p-4 overflow-auto">
           <div className="flex w-full mt-2 space-x-3 max-w-xs">
             <div className="flex-shrink-0 h-10 w-10 rounded-full bg-gray-300">
@@ -79,19 +89,8 @@ export default function InputPanel() {
           })}
         </div>
 
-        <div className="bg-gray-300 p-4">
-          <input
-            className="flex items-center h-10 w-full rounded px-3 text-sm"
-            type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") fetchOpenAI();
-            }}
-            placeholder="Type your message…"
-          />
-        </div>
-      </div>
+         
+        </div> */}
     </div>
   );
 }

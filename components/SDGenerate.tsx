@@ -9,10 +9,11 @@ export default function SDGenerate() {
     const fetchSD = async () => {
       const payload = {
         prompt: "maltese puppy women sexy",
-        batch_size: '2',
-        steps: 5,
-        width: 256,
-        height: 256,
+        batch_size: "1",
+        sampler_index: "UniPC",
+        steps: 15,
+        width: 512,
+        height: 512,
       };
       const res = await fetch("/proxy/sdapi/v1/txt2img", {
         method: "POST",
@@ -29,12 +30,11 @@ export default function SDGenerate() {
   }, []);
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
-        <FormLabel/>
+      <FormLabel />
       {(loading && <h1>Loading...</h1>) || null}
       {result.map((x, idx) => {
         return <img key={idx} src={`data:image/jpeg;base64, ${x}`} alt="" />;
       })}
-      
     </main>
   );
 }
