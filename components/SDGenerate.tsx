@@ -22,25 +22,30 @@ export default function SDGenerate() {
   };
   const fetchSD = async () => {
     setLoading(true);
-    const payload = {
-      prompt: `cxxooo sharp edge highly detailed 3D <lora:cxxooo:2> ${texts
-        .filter((x: string) => !!x)
-        .join(" ")}`,
-      batch_size: "1",
-      sampler_index: "UniPC",
-      steps: 15,
-      width: 480,
-      height: 480,
-    };
-    const res = await fetch("/proxy/sdapi/v1/txt2img", {
-      method: "POST",
-      body: JSON.stringify(payload),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((r) => r.json());
-    setResult([...result, { img: res.images[0], des: res.info }]);
-    setLoading(false);
+    try{
+      const payload = {
+        prompt: `cxxooo, sharp edge, highly detailed, 3D, <lora:cxxooo:1>, ${texts
+          .filter((x: string) => !!x)
+          .join(", ")}`,
+        batch_size: "1",
+        sampler_index: "UniPC",
+        steps: 15,
+        width: 480,
+        height: 480,
+      };
+      const res = await fetch("/proxy/sdapi/v1/txt2img", {
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then((r) => r.json());
+      setResult([...result, { img: res.images[0], des: res.info }]);
+      setLoading(false)
+    }catch(e){
+      setLoading(false)
+    }
+
   };
   const fetchSDIMG = async () => {
     setLoading(true);
@@ -50,8 +55,8 @@ export default function SDGenerate() {
       sampler_index: "UniPC",
       denoising_strength: 0.5,
       steps: 15,
-      width: 480,
-      height: 480,
+      width: 360,
+      height: 360,
     };
     const res = await fetch("/proxy/sdapi/v1/img2img", {
       method: "POST",
@@ -66,7 +71,7 @@ export default function SDGenerate() {
   return (
     <div className="flex w-3/5 min-h-screen flex-col items-center gap-1">
       <div className="loras">
-        <h2>MODELS:</h2>
+        <h2>Loras:</h2>
 
         {loras.map((x: any) => {
           return (

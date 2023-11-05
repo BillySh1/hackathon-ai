@@ -233,6 +233,8 @@ body {
 }
 
 .loras {
+  max-width: 200%;
+  text-wrap: nowrap;
   display: flex;
   margin-bottom: 1.5rem;
   align-items: center;
