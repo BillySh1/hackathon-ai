@@ -225,3 +225,10 @@ body {
   width: auto;
   transform: translateX(5%);
 }
+
+.connect-btn{
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  z-index: 5;
+}

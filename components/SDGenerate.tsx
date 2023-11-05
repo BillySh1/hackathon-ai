@@ -19,8 +19,8 @@ export default function SDGenerate() {
       batch_size: "1",
       sampler_index: "UniPC",
       steps: 15,
-      width: 480,
-      height: 480,
+      width: 240,
+      height: 240,
     };
     const res = await fetch("/proxy/sdapi/v1/txt2img", {
       method: "POST",
@@ -29,7 +29,6 @@ export default function SDGenerate() {
         "Content-Type": "application/json",
       },
     }).then((r) => r.json());
-    console.log(res,'kkkk',result)
     setResult([...result, { img: res.images[0], des: res.info }]);
     setLoading(false);
   };
@@ -57,7 +56,7 @@ export default function SDGenerate() {
   return (
     <div className="flex w-3/5 min-h-screen flex-col items-center gap-1">
       <div className="img-container">
-        {result.length > 0 && !loading&& (
+        {result.length > 0 && !loading && (
           <div
             onClick={() => setIndex(index - 1)}
             className={`arrow ${index === 0 ? "disable" : ""}`}
@@ -120,3 +119,7 @@ export default function SDGenerate() {
     </div>
   );
 }
+
+export const config = {
+  maxDuration: 50,
+};

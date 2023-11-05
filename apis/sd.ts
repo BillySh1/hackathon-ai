@@ -1,4 +1,1 @@
-const fetchPOST = async () => {
-    const res = await fetch("/proxy/sdapi/v1/loras").then((r) => r.json());
-    console.log(res, "result");
-  };
+export const contractAddress = '0x72eFE91Cf3069aCeAb1B22C8729Cd6696C9bD321'
