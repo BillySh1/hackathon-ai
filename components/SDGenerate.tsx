@@ -15,7 +15,9 @@ export default function SDGenerate() {
   const fetchSD = async () => {
     setLoading(true);
     const payload = {
-      prompt: texts.filter((x: string) => !!x).join(" "),
+      prompt: `cxxooo, sharp edge, highly detailed, 3D, ${texts
+        .filter((x: string) => !!x)
+        .join(" ")}`,
       batch_size: "1",
       sampler_index: "UniPC",
       steps: 15,
