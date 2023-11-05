@@ -36,7 +36,7 @@ body {
 }
 .grid-bg {
   max-width: 60%;
-  padding: 3rem 2rem;
+  padding: 1.5rem 2rem;
 }
 .grid-item {
   padding: 0.5rem 0.8rem;
@@ -221,14 +221,20 @@ body {
   width: auto;
 }
 .hero-title {
-  height: 13rem;
+  height: 8rem;
   width: auto;
-  transform: translateX(5%);
 }
 
-.connect-btn{
+.connect-btn {
   position: absolute;
   top: 2rem;
   right: 2rem;
   z-index: 5;
+}
+
+.loras {
+  display: flex;
+  margin-bottom: 1.5rem;
+  align-items: center;
+  gap: 1rem;
 }

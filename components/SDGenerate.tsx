@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "@/state";
 import Loading from "./Loading";
@@ -10,19 +10,27 @@ export default function SDGenerate() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<any>([]);
   const [index, setIndex] = useState(0);
+  const [loras, setLoras] = useState([]);
   const texts = useSelector<AppState, any>((state) => state.foo.texts);
   const dispatch = useDispatch();
+  useEffect(() => {
+    getLoras();
+  }, []);
+  const getLoras = async () => {
+    const res = await fetch("/proxy/sdapi/v1/loras").then((r) => r.json());
+    setLoras(res);
+  };
   const fetchSD = async () => {
     setLoading(true);
     const payload = {
-      prompt: `cxxooo, sharp edge, highly detailed, 3D, ${texts
+      prompt: `cxxooo sharp edge highly detailed 3D <lora:cxxooo:2> ${texts
         .filter((x: string) => !!x)
         .join(" ")}`,
       batch_size: "1",
       sampler_index: "UniPC",
       steps: 15,
-      width: 240,
-      height: 240,
+      width: 480,
+      height: 480,
     };
     const res = await fetch("/proxy/sdapi/v1/txt2img", {
       method: "POST",
@@ -57,6 +65,20 @@ export default function SDGenerate() {
   };
   return (
     <div className="flex w-3/5 min-h-screen flex-col items-center gap-1">
+      <div className="loras">
+        <h2>MODELS:</h2>
+
+        {loras.map((x: any) => {
+          return (
+            <div
+              className={`${x.name === "cxxooo" ? "" : "disable"}`}
+              key={x.name}
+            >
+              {x.name} : {x.name === "cxxooo" ? 1 : 0}
+            </div>
+          );
+        })}
+      </div>
       <div className="img-container">
         {result.length > 0 && !loading && (
           <div
