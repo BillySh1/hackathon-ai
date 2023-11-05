@@ -30,8 +30,8 @@ export default function SDGenerate() {
         batch_size: "1",
         sampler_index: "UniPC",
         steps: 15,
-        width: 480,
-        height: 480,
+        width: 280,
+        height: 280,
       };
       const res = await fetch("/proxy/sdapi/v1/txt2img", {
         method: "POST",
@@ -55,8 +55,8 @@ export default function SDGenerate() {
       sampler_index: "UniPC",
       denoising_strength: 0.5,
       steps: 15,
-      width: 360,
-      height: 360,
+      width: 280,
+      height: 280,
     };
     const res = await fetch("/proxy/sdapi/v1/img2img", {
       method: "POST",

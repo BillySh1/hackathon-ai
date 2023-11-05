@@ -18,7 +18,7 @@ export default function SDPage() {
     address: "0x72eFE91Cf3069aCeAb1B22C8729Cd6696C9bD321",
     abi: abi,
     functionName: "mint",
-    args: [account.address, ['QmVGDYWYFdU3iS3kF4HQgUGsnLMGrtzwEwcsd1pPZKfB2H'], ""],
+    args: [account.address, ['0x66df07d3be08df44e1675e60b40e02925ecaa161f4c47523c20c8fcb94a043c2'], ""],
   });
   const { data, write } = useContractWrite(config);
   const { isLoading, isSuccess } = useWaitForTransaction({
